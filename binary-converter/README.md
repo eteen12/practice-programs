@@ -1,4 +1,4 @@
-# Email Sender
+# Binary and decimal converter
 
 This is a simple practice program, in which you customize the binary or decimal numbers, and get the converted amount.
 
