@@ -1,6 +1,6 @@
 # Email Sender
 
-This micro project uses Nodemailer to send automated emails, with a simple command. Send a specified amount of emails, automated.
+This practice program uses Nodemailer to send automated emails, with a simple command. Send a specified amount of emails, automated.
 
 ## Setup
 
