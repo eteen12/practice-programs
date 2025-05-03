@@ -11,4 +11,7 @@ for (i = 0; i < array.length - 1; i++) {
   array[i] = array[min];
   array[min] = temp;
 }
+
+
+
 console.log(array);

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Force vs Distance Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>Force vs Distance Chart</h1>
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+      const charges = [
+        { left: 5, right: 8, distance: 0.03 },
+        { left: 5, right: 8, distance: 0.04 },
+        { left: 5, right: 8, distance: 0.05 },
+        { left: 5, right: 8, distance: 0.06 },
+        { left: 5, right: 8, distance: 0.07 },
+        { left: 5, right: 8, distance: 0.08 },
+        { left: 5, right: 8, distance: 0.09 },
+        { left: 5, right: 8, distance: 0.1 },
+      ];
+
+      const k = 9e9;
+      const distances = [];
+      const forces = [];
+
+      charges.forEach((charge) => {
+        const q1 = charge.left * 1e-6; // Micro to Coulombs
+        const q2 = charge.right * 1e-6;
+        const r = charge.distance ** 2;
+
+        const result = (k * q1 * q2) / r;
+        distances.push(charge.distance);
+        forces.push(result);
+      });
+
+      const ctx = document.getElementById("myChart").getContext("2d");
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: distances, // X-axis: Distance in meters
+          datasets: [
+            {
+              label: "Force (N)",
+              data: forces, // Y-axis: Force in Newtons
+              borderColor: "rgba(75, 192, 192, 1)",
+              fill: false,
+              tension: 0.1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Distance (m)",
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Force (N)",
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
